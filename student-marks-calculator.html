@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Student Mark Calculator</title>
+
+    <style>
+
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: lightgray;
+        }
+
+        .container {
+            width: 350px;
+            margin: 50px auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 15px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 15px;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: lightgray;
+            border-radius: 10px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <h1>Student Mark Calculator</h1>
+
+        <h2>Enter Your Marks</h2>
+
+        <label>Total Marks:</label>
+
+        <input type="number" id="totalMarks">
+
+        <br>
+
+        <label>Obtained Marks:</label>
+
+        <input type="number" id="obtainedMarks">
+
+        <br>
+
+        <button onclick="calculateResult()">
+            Calculate Result
+        </button>
+
+
+        <div class="result">
+
+            <h2>RESULT</h2>
+
+            <p>Total Marks = <span id="showTotal"></span></p>
+
+            <p>Obtained Marks = <span id="showObtained"></span></p>
+
+            <p>Percentage = <span id="showPercentage"></span></p>
+
+            <p>CGPA = <span id="showCGPA"></span></p>
+
+            <p>Grade = <span id="showGrade"></span></p>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function calculateResult() {
+
+            let totalMarks =
+                Number(document.getElementById("totalMarks").value);
+
+            let obtainedMarks =
+                Number(document.getElementById("obtainedMarks").value);
+
+
+            if (totalMarks <= 0 ||
+                obtainedMarks < 0 ||
+                obtainedMarks > totalMarks) {
+
+                alert("Invalid Marks");
+
+                return;
+            }
+
+
+            let percentage =
+                (obtainedMarks / totalMarks) * 100;
+
+
+            let cgpa =
+                percentage / 9.5;
+
+
+            let grade;
+
+
+            if (percentage >= 90) {
+                grade = "A+";
+            }
+
+            else if (percentage >= 80) {
+                grade = "A";
+            }
+
+            else if (percentage >= 70) {
+                grade = "B";
+            }
+
+            else if (percentage >= 60) {
+                grade = "C";
+            }
+
+            else if (percentage >= 50) {
+                grade = "D";
+            }
+
+            else {
+                grade = "Fail";
+            }
+
+
+            document.getElementById("showTotal").innerHTML =
+                totalMarks;
+
+            document.getElementById("showObtained").innerHTML =
+                obtainedMarks;
+
+            document.getElementById("showPercentage").innerHTML =
+                percentage.toFixed(2) + "%";
+
+            document.getElementById("showCGPA").innerHTML =
+                cgpa.toFixed(2);
+
+            document.getElementById("showGrade").innerHTML =
+                grade;
+
+        }
+
+    </script>
+
+</body>
+
+</html>
